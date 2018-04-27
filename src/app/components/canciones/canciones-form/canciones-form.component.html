@@ -1,0 +1,15 @@
+<div class="container">
+
+
+  <form class="col-xs-8" novalidate (ngSubmit)="submit($event)" [formGroup]="formulario">
+    <div class="form-group form-inline">
+      <label for="nombre">Nombre:</label>
+      <input formControlName="nombre" class="form-control">
+    </div>
+
+    <input type="submit" *ngIf="crearbtn" class="btn btn-success" value="Crear">
+
+  </form>
+
+</div>
+<!-- container -->
