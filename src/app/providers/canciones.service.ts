@@ -17,6 +17,8 @@ export class CancionesService {
 
   postCancion(cancion): Observable<any> {
     let url = GLOBAL.endpoint + 'cancion/';
+    console.log(cancion);
+    
     return this.http.post(url, cancion);
   }
 

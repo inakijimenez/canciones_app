@@ -4,10 +4,12 @@
   <form class="col-xs-8" novalidate (ngSubmit)="submit($event)" [formGroup]="formulario">
     <div class="form-group form-inline">
       <label for="nombre">Nombre:</label>
-      <input formControlName="nombre" class="form-control">
+      <input formControlName="nombre" class="form-control" value="{{cancion.nombre}}">
     </div>
 
     <input type="submit" *ngIf="crearbtn" class="btn btn-success" value="Crear">
+    <span *ngIf="!crearbtn" class="btn btn-primary" (click)="modificar(cancion)">Modificar</span>
+    <span *ngIf="!crearbtn" class="btn btn-danger" (click)="eliminar(cancion.id)">Eliminar</span>
 
   </form>
 

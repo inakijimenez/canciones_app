@@ -10,11 +10,15 @@ import { Cancion } from '../../models/cancion';
 export class CancionesComponent implements OnInit {
 
   canciones: Cancion[];
+  cancion: Cancion;
+  crearbtn: boolean;
 
   constructor(private cancionesService: CancionesService) {
     console.log('CancionesComponent contructor');
 
     this.canciones = [];
+    this.cancion = new Cancion();
+    this.crearbtn = false;
     //this.mockData();
     this.getCanciones();
   }
@@ -32,11 +36,14 @@ export class CancionesComponent implements OnInit {
     });
   }
 
-  eliminar(id: number) {
-    this.cancionesService.deleteCancion(id).subscribe(data => {
-      this.getCanciones();
-    });
+  verCancion(cancion: Cancion){
+    this.cancion = cancion;
+    this.crearbtn= false;
+  }
 
+  crear(){
+    this.cancion = new Cancion();
+    this.crearbtn = true;
   }
 
   mockData() {

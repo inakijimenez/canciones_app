@@ -1,10 +1,17 @@
 <h1>Canciones</h1>
+<div class="row">
+  <div class="jumbotron col-md-6">
+    <span class="btn btn-success" (click)="crear()">Nueva cancion</span>
+    <p *ngIf="canciones.length == 0">Todavia no existen canciones</p>
+    <ul class="list-group" *ngFor="let cancion of  canciones">
+      <li class="list-group-item d-flex justify-content-between align-items-center" id="{{cancion.id}}">
+        <span class="badge badge-primary badge-pill">{{cancion.id}}</span>{{cancion.nombre}}
+        <span class="badge badge-primary badge-pill" (click)="verCancion(cancion)">Editar</span>
 
-<div class="jumbotron">
-  <p *ngIf="canciones.length == 0">Todavia no existen canciones</p>
-  <ul class="list-group" *ngFor="let cancion of  canciones">
-    <li class="list-group-item d-flex justify-content-between align-items-center" id="{{cancion.id}}"><span class="badge badge-primary badge-pill">{{cancion.id}}</span>{{cancion.nombre}}<span class="badge badge-danger badge-pill" (click)="eliminar(cancion.id)">Eliminar</span></li>
-  </ul>
+      </li>
+    </ul>
+  </div>
+  <div class="col-md-6">
+    <app-canciones-form [cancion]="cancion" [crearbtn]="crearbtn" [canciones]="canciones"></app-canciones-form>
+  </div>
 </div>
-
-<app-canciones-form></app-canciones-form>
