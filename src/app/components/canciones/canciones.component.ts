@@ -12,6 +12,7 @@ export class CancionesComponent implements OnInit {
   canciones: Cancion[];
   cancion: Cancion;
   crearbtn: boolean;
+  verForm: boolean;
 
   constructor(private cancionesService: CancionesService) {
     console.log('CancionesComponent contructor');
@@ -19,6 +20,7 @@ export class CancionesComponent implements OnInit {
     this.canciones = [];
     this.cancion = new Cancion();
     this.crearbtn = false;
+    this.verForm = false;
     //this.mockData();
     this.getCanciones();
   }
@@ -30,20 +32,29 @@ export class CancionesComponent implements OnInit {
   getCanciones() {
     this.canciones = [];
     this.cancionesService.getCanciones().subscribe(data => {
-      data.forEach(cancion => {
-        this.canciones.push(cancion);
-      });
+      if (data != null) {
+        data.forEach(cancion => {
+          this.canciones.push(cancion);
+        });
+      }
     });
   }
 
-  verCancion(cancion: Cancion){
+  verCancion(cancion: Cancion) {
     this.cancion = cancion;
-    this.crearbtn= false;
+    this.crearbtn = false;
+    this.verForm = true;
   }
 
-  crear(){
+  crear() {
     this.cancion = new Cancion();
     this.crearbtn = true;
+    this.verForm = true;
+  }
+
+  doneEvent(e) {
+    this.getCanciones();
+    this.verForm = false;
   }
 
   mockData() {

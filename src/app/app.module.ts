@@ -22,7 +22,7 @@ import { CancionesFormComponent } from './components/canciones/canciones-form/ca
     BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule    
+    HttpClientModule   
   ],
   providers: [CancionesService],
   bootstrap: [AppComponent]

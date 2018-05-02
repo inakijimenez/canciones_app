@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { GLOBAL } from '../GLOBAL';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 @Injectable()
 export class CancionesService {
@@ -17,12 +17,16 @@ export class CancionesService {
 
   postCancion(cancion): Observable<any> {
     let url = GLOBAL.endpoint + 'cancion/';
-    console.log(cancion);
-    
-    return this.http.post(url, cancion);
+    console.log('post cancion %o',cancion);
+    let body = {'id': cancion.id, 'nombre': cancion.nombre};
+
+    return this.http.post(url, body);
+    //return this.http.post(url, cancion);
   }
 
   putCancion(cancion): Observable<any> {
+    console.log('put cancion %o', cancion);
+    
     let url = GLOBAL.endpoint + 'cancion/' + cancion.id;
     return this.http.put(url, cancion);
   }
